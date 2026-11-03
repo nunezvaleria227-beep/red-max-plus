@@ -28,6 +28,7 @@ sub init()
 
     m.zone = "hero"
     m.prevZone = "hero"
+    m.lastPos = invalid
     m.btnIndex = 0
     m.railIndex = 1
     m.server = invalid
@@ -123,8 +124,7 @@ end sub
 ' ----------------------------------------------------------------- filas
 
 sub buildRows()
-    previous = invalid
-    if m.rows.content <> invalid and m.rowData.Count() > 0 then previous = m.rows.rowItemFocused
+    previous = m.lastPos
     rows = []
 
     cont = []
@@ -189,12 +189,12 @@ sub buildRows()
     m.rows.rowHeights = heights
     m.rows.content = root
     m.rows.visible = (m.rowData.Count() > 0)
+    ' Se vuelve a dejar el foco donde estaba (solo si la persona ya había entrado a las filas).
     if previous <> invalid and m.rowData.Count() > 0
         r = previous[0]
         c = previous[1]
         if r >= m.rowData.Count() then r = m.rowData.Count() - 1
         if c >= m.rowData[r].Count() then c = m.rowData[r].Count() - 1
-        if r < 0 then r = 0
         if c < 0 then c = 0
         m.rows.jumpToRowItem = [r, c]
     end if
@@ -203,6 +203,7 @@ end sub
 
 function rowItem(at as Dynamic) as Dynamic
     if at = invalid then return invalid
+    if Type(at) <> "roArray" then return invalid
     if at.Count() < 2 then return invalid
     r = at[0]
     c = at[1]
@@ -212,8 +213,10 @@ function rowItem(at as Dynamic) as Dynamic
 end function
 
 sub onRowFocus()
+    at = m.rows.rowItemFocused
+    if rowItem(at) <> invalid then m.lastPos = [at[0], at[1]]
     if m.zone <> "rows" then return
-    e = rowItem(m.rows.rowItemFocused)
+    e = rowItem(at)
     if e = invalid then return
     showItem(e, false)
 end sub
