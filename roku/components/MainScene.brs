@@ -1,7 +1,7 @@
 ' Escena principal: guarda la sesión y maneja la pila de pantallas.
 
 sub init()
-    m.top.backgroundColor = "0x100809FF"
+    m.top.backgroundColor = "0x070708FF"
     ' "cache" guarda las últimas listas abiertas para que volver a entrar sea instantáneo.
     m.global.addFields({ session: { parental: true }, cache: CreateObject("roSGNode", "Node") })
     m.stack = []

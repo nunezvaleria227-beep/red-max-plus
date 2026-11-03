@@ -63,6 +63,7 @@ sub onInfo(event as Object)
         extra = extra + "Reparto: " + info.cast
     end if
     m.extra.text = extra
+    if toS(info.backdrop) <> "" then m.top.findNode("backdrop").uri = toS(info.backdrop)
     if info.cover <> "" and toS(m.top.item.icon) = "" then m.cover.uri = info.cover
     if info.ext <> "" then m.ext = info.ext
     maybeAutoplay()

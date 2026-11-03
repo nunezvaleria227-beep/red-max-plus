@@ -58,6 +58,7 @@ sub onInfo(event as Object)
     end if
     m.meta.text = parts
     m.plot.text = info.plot
+    if toS(info.backdrop) <> "" then m.top.findNode("backdrop").uri = toS(info.backdrop)
     if info.cover <> "" and toS(m.top.item.icon) = "" then m.cover.uri = info.cover
 
     m.seasons = resp.seasons
