@@ -15,6 +15,7 @@ on:
       - red-max-plus
     paths-ignore:
       - "docs/**"
+      - "roku/**"
       - "**.md"
   workflow_dispatch:
   schedule:
