@@ -36,6 +36,7 @@ import com.example.mitvplayer.ui.NotificationsScreen
 import com.example.mitvplayer.ui.PosterGridScreen
 import com.example.mitvplayer.ui.RecordingsScreen
 import com.example.mitvplayer.ui.Screen
+import com.example.mitvplayer.ui.qaName
 import com.example.mitvplayer.ui.SearchScope
 import com.example.mitvplayer.ui.SearchScreen
 import com.example.mitvplayer.ui.SeriesDetailScreen
@@ -46,8 +47,18 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel: AppViewModel by viewModels()
 
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        if (Config.QA_BUILD) qaOpen(intent)
+    }
+
+    private fun qaOpen(intent: android.content.Intent?) {
+        MainActivityQa(viewModel, intent?.getStringExtra("qa_open"))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Config.QA_BUILD) qaOpen(intent)
         setContent {
             MiTvTheme {
                 Surface(
@@ -60,6 +71,19 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+/** Solo en la compilación de prueba: abre una pantalla pedida con "am start --es qa_open Movies". */
+private fun MainActivityQa(vm: AppViewModel, name: String?) {
+    val screen = when (name) {
+        "Live" -> Screen.Live
+        "Movies" -> Screen.Movies
+        "SeriesList" -> Screen.SeriesList
+        "Settings" -> Screen.Settings
+        "Search" -> Screen.Search(SearchScope.ALL)
+        else -> null
+    } ?: return
+    vm.qaOpen(screen)
 }
 
 /** Si la app se cerró sola la vez anterior, muestra el motivo una vez (para mandarlo en foto). */
@@ -81,7 +105,14 @@ private fun AppRoot(vm: AppViewModel) {
     // Atrás en cualquier pantalla abierta regresa a la anterior; en el inicio o el login cierra la app.
     BackHandler(enabled = vm.stack.size > 1) { vm.back() }
 
-    when (val top = vm.stack.last()) {
+    val current = vm.stack.last()
+    if (Config.QA_BUILD) {
+        androidx.compose.runtime.LaunchedEffect(current) {
+            androidx.compose.runtime.withFrameNanos { }
+            QaProbe.shown(current.qaName())
+        }
+    }
+    when (val top = current) {
         Screen.Login -> LoginScreen(vm)
         Screen.Home -> HomeScreen(vm)
         Screen.Live -> LiveScreen(vm, vm.live, title = "Live")

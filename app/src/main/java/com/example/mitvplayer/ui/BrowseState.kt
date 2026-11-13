@@ -229,9 +229,11 @@ class BrowseState<T : Item>(
         loading = true
         error = null
         try {
+            val qaStart = android.os.SystemClock.uptimeMillis()
             val loaded = fetch(force)
             if (id != generation) return
             catalog = loaded
+            com.example.mitvplayer.QaProbe.log("CATALOGO ${kind.name} ${loaded.items.size} elementos, ${loaded.categories.size} categorías en ${android.os.SystemClock.uptimeMillis() - qaStart} ms")
             updatedAt = loaded.updatedAt
             val known = selectedId.startsWith("__") || loaded.counts.containsKey(selectedId)
             if (!known) selectedId = ROW_ALL

@@ -55,6 +55,9 @@ enum class SearchScope(val label: String) {
     SERIES("Series")
 }
 
+/** Nombre corto de la pantalla (para las mediciones de la prueba). */
+fun Screen.qaName(): String = this::class.java.simpleName
+
 sealed interface Screen {
     data object Login : Screen
     data object Home : Screen
@@ -343,23 +346,36 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     // --------------------------------------------------------------- navegación
 
     fun open(screen: Screen) {
+        com.example.mitvplayer.QaProbe.opened(screen.qaName())
         stack = stack + screen
     }
 
     fun openMovie(movie: Movie, restoreFocus: Boolean = true) {
         movies.restoring = restoreFocus
         repo.library?.recentMovies?.touch(movie.id)
+        com.example.mitvplayer.QaProbe.opened("MovieDetails")
         stack = stack + Screen.MovieDetails(movie)
     }
 
     fun openSeries(item: SeriesItem, restoreFocus: Boolean = true) {
         series.restoring = restoreFocus
         repo.library?.recentSeries?.touch(item.id)
+        com.example.mitvplayer.QaProbe.opened("SeriesDetails")
         stack = stack + Screen.SeriesDetails(item)
     }
 
+    /** Prueba automática: vuelve al inicio y abre la pantalla pedida (solo si ya hay sesión). */
+    fun qaOpen(screen: Screen) {
+        if (stack.firstOrNull() != Screen.Home) return
+        stack = listOf(Screen.Home)
+        open(screen)
+    }
+
     fun back() {
-        if (stack.size > 1) stack = stack.dropLast(1)
+        if (stack.size > 1) {
+            com.example.mitvplayer.QaProbe.opened(stack[stack.size - 2].qaName())
+            stack = stack.dropLast(1)
+        }
     }
 
     // ------------------------------------------------------------------ ajustes

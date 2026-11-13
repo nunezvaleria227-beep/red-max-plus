@@ -17,9 +17,13 @@ class MiTvApp : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
         CrashLog.install(this)
+        if (Config.QA_BUILD) {
+            QaProbe.start()
+            com.example.mitvplayer.data.PerfLog.enabled = true
+        }
         // La identificación que aceptó el servidor la última vez (ver Repository.loginTryingAgents).
         getSharedPreferences("network", MODE_PRIVATE).getString("user_agent", null)?.let { Config.userAgent = it }
-        com.example.mitvplayer.data.PerfLog.enabled =
+        com.example.mitvplayer.data.PerfLog.enabled = Config.QA_BUILD ||
             (applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0
         // Abrir el almacén cifrado de la sesión tarda (Keystore): se hace en paralelo mientras se arma la pantalla.
         Thread({
