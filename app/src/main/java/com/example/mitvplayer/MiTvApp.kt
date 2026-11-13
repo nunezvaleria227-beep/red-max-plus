@@ -16,6 +16,7 @@ class MiTvApp : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+        CrashLog.install(this)
         // La identificación que aceptó el servidor la última vez (ver Repository.loginTryingAgents).
         getSharedPreferences("network", MODE_PRIVATE).getString("user_agent", null)?.let { Config.userAgent = it }
         com.example.mitvplayer.data.PerfLog.enabled =

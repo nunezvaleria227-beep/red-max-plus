@@ -123,11 +123,11 @@ fun HomeScreen(vm: AppViewModel) {
 
     val movies = vm.movies.visibleItems
     val seriesItems = vm.series.visibleItems
-    val newMovies = remember(movies) { movies.sortedByDescending { it.added }.take(24) }
+    val newMovies = remember(movies) { movies.distinctBy { it.id }.sortedByDescending { it.added }.take(24) }
     val topMovies = remember(movies) {
-        movies.filter { it.rating10 >= 7f }.sortedByDescending { it.rating10 }.take(24)
+        movies.distinctBy { it.id }.filter { it.rating10 >= 7f }.sortedByDescending { it.rating10 }.take(24)
     }
-    val newSeries = remember(seriesItems) { seriesItems.sortedByDescending { it.added }.take(24) }
+    val newSeries = remember(seriesItems) { seriesItems.distinctBy { it.id }.sortedByDescending { it.added }.take(24) }
     val featured = newMovies.firstOrNull()
     var featuredInfo by remember(featured?.id) { mutableStateOf<MovieInfo?>(null) }
     var featuredFav by remember(featured?.id) {
@@ -609,7 +609,7 @@ private fun ContinueRow(entries: List<ResumeEntry>, onPlay: (ResumeEntry) -> Uni
             contentPadding = PaddingValues(horizontal = 40.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(entries, key = { it.key }) { entry ->
+            items(entries.distinctBy { it.key }, key = { it.key }) { entry ->
                 FocusCard(
                     onClick = { onPlay(entry) },
                     modifier = Modifier.width(176.dp),
@@ -673,7 +673,7 @@ private fun PosterRow(title: String, tiles: List<Tile>) {
             contentPadding = PaddingValues(horizontal = 40.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(tiles, key = { it.key }) { tile ->
+            items(tiles.distinctBy { it.key }, key = { it.key }) { tile ->
                 PosterCard(
                     title = tile.title,
                     imageUrl = tile.image,

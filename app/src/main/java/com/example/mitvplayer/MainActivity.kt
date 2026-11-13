@@ -9,7 +9,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import com.example.mitvplayer.ui.Opt
+import com.example.mitvplayer.ui.OptionsDialog
 import com.example.mitvplayer.ui.AccountScreen
 import com.example.mitvplayer.ui.AppViewModel
 import com.example.mitvplayer.ui.ContinueScreen
@@ -48,10 +55,25 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     AppRoot(viewModel)
+                    LastCrashNotice()
                 }
             }
         }
     }
+}
+
+/** Si la app se cerró sola la vez anterior, muestra el motivo una vez (para mandarlo en foto). */
+@Composable
+private fun LastCrashNotice() {
+    val context = LocalContext.current
+    var text by remember { mutableStateOf(CrashLog.read(context)) }
+    val shown = text ?: return
+    OptionsDialog(
+        title = "La app se cerró la última vez",
+        message = "Toma una foto de este mensaje y mándala a soporte:\n\n$shown",
+        options = listOf(Opt("Entendido") { CrashLog.clear(context); text = null }),
+        onDismiss = { CrashLog.clear(context); text = null }
+    )
 }
 
 @Composable
