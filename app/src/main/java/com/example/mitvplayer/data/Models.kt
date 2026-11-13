@@ -30,6 +30,38 @@ fun searchKey(text: String): String {
     return out.toString().lowercase()
 }
 
+/**
+ * Calificación de 0 a 10 a partir del texto del servidor ("7.5", "7,5", "8", "N/A", vacío...).
+ * Se hace a mano: el toFloatOrNull() de Kotlin usa una expresión regular enorme y, llamado miles de veces
+ * (al ordenar por calificación), dejaba la pantalla congelada varios segundos.
+ */
+fun parseRating(text: String?): Float {
+    if (text.isNullOrEmpty()) return 0f
+    var whole = 0f
+    var frac = 0f
+    var scale = 0.1f
+    var seenDigit = false
+    var afterPoint = false
+    for (ch in text) {
+        when {
+            ch in '0'..'9' -> {
+                seenDigit = true
+                if (afterPoint) {
+                    frac += (ch - '0') * scale
+                    scale /= 10f
+                } else {
+                    whole = whole * 10f + (ch - '0')
+                }
+            }
+            (ch == '.' || ch == ',') && !afterPoint -> afterPoint = true
+            ch == ' ' && !seenDigit -> Unit
+            else -> break
+        }
+    }
+    if (!seenDigit) return 0f
+    return (whole + frac).coerceIn(0f, 10f)
+}
+
 /** Las tres secciones que se descargan completas del servidor. */
 enum class Kind(val streamsAction: String, val categoriesAction: String, val cacheName: String) {
     LIVE("get_live_streams", "get_live_categories", "live"),
@@ -101,8 +133,7 @@ data class Movie(
     val rating: String?,
     override val added: Long = 0L
 ) : Item {
-    override val rating10: Float
-        get() = rating?.toFloatOrNull()?.coerceIn(0f, 10f) ?: 0f
+    override val rating10: Float = parseRating(rating)
     override val key: String = searchKey(name)
 }
 
@@ -132,8 +163,7 @@ data class SeriesItem(
     val rating: String?,
     override val added: Long = 0L
 ) : Item {
-    override val rating10: Float
-        get() = rating?.toFloatOrNull()?.coerceIn(0f, 10f) ?: 0f
+    override val rating10: Float = parseRating(rating)
     override val key: String = searchKey(name)
 }
 

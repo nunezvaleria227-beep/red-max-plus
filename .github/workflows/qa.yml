@@ -19,7 +19,7 @@ on:
       - "**.md"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: qa-${{ github.ref }}
@@ -109,9 +109,12 @@ jobs:
           done
           cat qa-out/report.md >> "$GITHUB_STEP_SUMMARY" || true
 
-      - uses: actions/upload-artifact@v4
+      - name: Guardar resultados en la rama qa-resultados
         if: always()
-        with:
-          name: qa-resultados
-          path: qa-out
-          retention-days: 14
+        run: |
+          cd qa-out
+          git init -q
+          git checkout -q -b qa-resultados
+          git add -A
+          git -c user.name=qa -c user.email=qa@example.com commit -q -m "Resultados de la prueba QA ${{ github.run_number }} (${{ github.sha }})"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:qa-resultados
