@@ -381,6 +381,7 @@ def sections():
 def movie_detail():
     if not open_section("movies"):
         return
+    keys(DOWN, wait=0.4)
     keys(RIGHT, wait=0.6)
     t0 = now_dev()
     keys(OK, wait=0.2)
@@ -403,6 +404,7 @@ def movie_detail():
 def series_detail():
     if not open_section("series"):
         return
+    keys(DOWN, wait=0.4)
     keys(RIGHT, wait=0.6)
     t0 = now_dev()
     keys(OK, wait=0.2)

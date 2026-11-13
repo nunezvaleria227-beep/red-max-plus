@@ -44,9 +44,11 @@ import com.example.mitvplayer.data.cleanTitle
 import com.example.mitvplayer.data.userMessage
 import com.example.mitvplayer.data.yearOf
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 enum class SearchScope(val label: String) {
     ALL("Todo"),
@@ -241,15 +243,30 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     var multiActive by mutableStateOf(0)
 
     init {
-        val stored = repo.savedCredentials()
-        if (stored != null) {
-            // Si la app trae el servidor fijo, se usa ese aunque la sesión guardada tenga otro:
-            // así, cuando el proveedor cambia de dominio, nadie tiene que cerrar sesión.
-            val saved = if (Config.PORTAL_URL.isNotBlank()) stored.copy(server = Config.PORTAL_URL) else stored
-            server = saved.server
-            username = saved.username
-            password = saved.password
-            viewModelScope.launch { doLogin(saved, remember = true) }
+        // La sesión guardada se lee fuera de la pantalla (abrir el almacén cifrado tarda en algunos equipos).
+        // Mientras tanto, si se sabe que hay sesión, ya se muestra "Entrando…".
+        if (repo.hasSavedSessionHint() != false) {
+            loginState = LoginUiState(loading = true)
+            viewModelScope.launch {
+                val stored = withContext(Dispatchers.IO) {
+                    try {
+                        repo.savedCredentials()
+                    } catch (e: Exception) {
+                        null
+                    }
+                }
+                if (stored == null) {
+                    loginState = LoginUiState()
+                    return@launch
+                }
+                // Si la app trae el servidor fijo, se usa ese aunque la sesión guardada tenga otro:
+                // así, cuando el proveedor cambia de dominio, nadie tiene que cerrar sesión.
+                val saved = if (Config.PORTAL_URL.isNotBlank()) stored.copy(server = Config.PORTAL_URL) else stored
+                server = saved.server
+                username = saved.username
+                password = saved.password
+                doLogin(saved, remember = true)
+            }
         }
     }
 

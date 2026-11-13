@@ -32,7 +32,7 @@ const val ROW_RECENT = "__recent"
 const val ROW_ADDED = "__added"
 
 private const val ADDED_LIMIT = 30
-private const val HOME_LIMIT = 24
+private const val HOME_LIMIT = 30
 
 /** Listas más largas que esto se ordenan en segundo plano (la pantalla nunca se congela). */
 private const val SORT_INLINE_MAX = 2500

@@ -72,6 +72,9 @@ class Repository(
 
     fun savedCredentials(): Credentials? = session.load()
 
+    /** Si hay una sesión guardada, sin abrir el almacén cifrado (null = no se sabe todavía). */
+    fun hasSavedSessionHint(): Boolean? = session.hasSavedHint
+
     suspend fun login(input: Credentials, remember: Boolean): AccountInfo {
         val normalized = input.copy(server = api.normalizeServer(input.server))
         val info = withContext(Dispatchers.IO) { loginTryingAgents(normalized) }
@@ -141,6 +144,7 @@ class Repository(
             ).also {
                 liveMemory = it
                 siblingIndex = null
+                buildSiblingIndex(it)
             }
         }
 
@@ -327,15 +331,39 @@ class Repository(
     /** Otras versiones del mismo canal (mismo nombre sin HD/FHD/4K…), las que ya se sabe que tienen guía primero. */
     private fun siblingIds(streamId: String): List<String> {
         val live = liveMemory ?: return emptyList()
-        val index = siblingIndex ?: live.items.groupBy({ epgBaseKey(it.name) }, { it.id })
-            .filterKeys { it != null }
-            .mapKeys { it.key!! }
-            .also { siblingIndex = it }
+        val index = siblingIndex
+        if (index == null) {
+            // Agrupar miles de canales por nombre tarda: se hace aparte, sin trabar la pantalla.
+            buildSiblingIndex(live)
+            return emptyList()
+        }
         val key = live.byId[streamId]?.let { epgBaseKey(it.name) } ?: return emptyList()
         val others = index[key].orEmpty().filter { it != streamId }
         if (others.isEmpty()) return others
         val known = synchronized(epgCache) { others.filter { epgCache[it]?.second?.isNotEmpty() == true } }
         return (known + others.filter { it !in known }).take(MAX_SIBLINGS)
+    }
+
+    @Volatile
+    private var siblingIndexBuilding = false
+
+    private fun buildSiblingIndex(live: Catalog<LiveChannel>) {
+        synchronized(this) {
+            if (siblingIndexBuilding) return
+            siblingIndexBuilding = true
+        }
+        Thread({
+            try {
+                val built = live.items.groupBy({ epgBaseKey(it.name) }, { it.id })
+                    .filterKeys { it != null }
+                    .mapKeys { it.key!! }
+                if (liveMemory === live) siblingIndex = built
+            } catch (e: Throwable) {
+                // Sin índice: simplemente no se presta la guía entre canales hermanos.
+            } finally {
+                siblingIndexBuilding = false
+            }
+        }, "epg-hermanos").apply { priority = Thread.MIN_PRIORITY }.start()
     }
 
     /** "Ahora y después" de UN canal (sin prestar de otros), con caché. Los vacíos se recuerdan más tiempo. */
