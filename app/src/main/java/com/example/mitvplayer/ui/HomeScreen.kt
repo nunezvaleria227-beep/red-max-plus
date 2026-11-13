@@ -121,13 +121,10 @@ fun HomeScreen(vm: AppViewModel) {
         }
     }
 
-    val movies = vm.movies.visibleItems
-    val seriesItems = vm.series.visibleItems
-    val newMovies = remember(movies) { movies.distinctBy { it.id }.sortedByDescending { it.added }.take(24) }
-    val topMovies = remember(movies) {
-        movies.distinctBy { it.id }.filter { it.rating10 >= 7f }.sortedByDescending { it.rating10 }.take(24)
-    }
-    val newSeries = remember(seriesItems) { seriesItems.distinctBy { it.id }.sortedByDescending { it.added }.take(24) }
+    // Ya vienen calculadas al cargar cada lista (sin ordenar decenas de miles de títulos en pantalla).
+    val newMovies = vm.movies.newestVisible
+    val topMovies = vm.movies.topRatedVisible
+    val newSeries = vm.series.newestVisible
     val featured = newMovies.firstOrNull()
     var featuredInfo by remember(featured?.id) { mutableStateOf<MovieInfo?>(null) }
     var featuredFav by remember(featured?.id) {
@@ -291,7 +288,7 @@ private fun HomeRail(top: List<RailItem>, bottom: List<RailItem>) {
         verticalArrangement = Arrangement.spacedBy(3.dp)
     ) {
         Image(
-            painter = painterResource(R.drawable.logo_mark),
+            bitmap = rememberArt(R.drawable.logo_mark),
             contentDescription = "Red Max Plus",
             modifier = Modifier
                 .width(40.dp)

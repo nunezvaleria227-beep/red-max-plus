@@ -33,6 +33,12 @@ class MiTvApp : Application(), ImageLoaderFactory {
                 // Si falla aquí, volverá a intentarse cuando haga falta.
             }
         }, "warmup").start()
+        Thread({
+            com.example.mitvplayer.ui.preloadArt(
+                resources,
+                listOf(R.drawable.logo_redmax, R.drawable.logo_mark, R.drawable.bg_home, R.drawable.art_live, R.drawable.art_movies, R.drawable.art_series)
+            )
+        }, "art").apply { priority = Thread.MIN_PRIORITY }.start()
     }
 
     val repository: Repository by lazy {

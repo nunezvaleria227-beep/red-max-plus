@@ -56,7 +56,7 @@ enum class SearchScope(val label: String) {
 }
 
 /** Nombre corto de la pantalla (para las mediciones de la prueba). */
-fun Screen.qaName(): String = this::class.java.simpleName
+fun Screen.qaName(): String = this::class.java.name.substringAfterLast('.').substringAfterLast('$')
 
 sealed interface Screen {
     data object Login : Screen
@@ -122,6 +122,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     /** Busca una versión nueva. [manual] = true muestra mensajes aunque no haya nada nuevo. */
     fun checkForUpdate(manual: Boolean = false) {
+        if (Config.QA_BUILD) return
         if (update is UpdateState.Downloading) return
         val app = getApplication<Application>()
         viewModelScope.launch {
@@ -196,39 +197,39 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     val live = BrowseState<LiveChannel>(
         kind = Kind.LIVE,
         scope = viewModelScope,
-        fetch = { force -> repo.liveCatalog(force) },
+        fetch = { force, progress -> repo.liveCatalog(force, progress) },
         favorites = { repo.library?.favLive },
         recents = { repo.library?.recentLive },
-        blocked = { parental.blocks(it.name) }
+        hideAdult = { parental.locked }
     )
 
     /** La radio son las categorías de En vivo cuyo nombre dice "radio". */
     val radio = BrowseState<LiveChannel>(
         kind = Kind.LIVE,
         scope = viewModelScope,
-        fetch = { _ -> repo.liveCatalog(false) },
+        fetch = { _, progress -> repo.liveCatalog(false, progress) },
         favorites = { repo.library?.favLive },
         recents = { repo.library?.recentLive },
         categoryFilter = { it.name.contains("radio", ignoreCase = true) },
-        blocked = { parental.blocks(it.name) }
+        hideAdult = { parental.locked }
     )
 
     val movies = BrowseState<Movie>(
         kind = Kind.MOVIES,
         scope = viewModelScope,
-        fetch = { force -> repo.movieCatalog(force) },
+        fetch = { force, progress -> repo.movieCatalog(force, progress) },
         favorites = { repo.library?.favMovies },
         recents = { repo.library?.recentMovies },
-        blocked = { parental.blocks(it.name) }
+        hideAdult = { parental.locked }
     )
 
     val series = BrowseState<SeriesItem>(
         kind = Kind.SERIES,
         scope = viewModelScope,
-        fetch = { force -> repo.seriesCatalog(force) },
+        fetch = { force, progress -> repo.seriesCatalog(force, progress) },
         favorites = { repo.library?.favSeries },
         recents = { repo.library?.recentSeries },
-        blocked = { parental.blocks(it.name) }
+        hideAdult = { parental.locked }
     )
 
     // ----------------------------------------------------------- pantalla múltiple
