@@ -355,7 +355,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     /** Pone o quita el perfil Niños (quitarlo pide el PIN antes, en la pantalla). */
     fun setKidsMode(on: Boolean) {
-        kids.setActive(on)
+        kids.turn(on)
         if (on) parental.lock()
         live.ensureSelectionVisible()
         radio.ensureSelectionVisible()

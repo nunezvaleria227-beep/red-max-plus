@@ -436,6 +436,43 @@ def live_channel():
     keys(BACK, wait=1.0)
 
 
+@step("pausa en vivo, regresar, número de canal y opciones")
+def live_extras():
+    if not open_section("live"):
+        return
+    keys(RIGHT, wait=0.5)
+    keys(DOWN, wait=0.4)
+    keys(OK, wait=6)
+    keys(OK, wait=7)
+    if "PlayerActivity" not in top_activity():
+        log("FALLO", "No se abrió el canal en pantalla completa: " + top_activity()[-70:])
+        return
+    keys(85, wait=9)  # ⏯ pausa: el canal se sigue guardando
+    shot("vivo_en_pausa")
+    log("INFO", "En pausa: " + " | ".join(texts(dump(quiet=True))[:6])[:220])
+    keys(OK, wait=7)  # sigue desde donde se pausó
+    shot("vivo_atrasado")
+    log("INFO", "Al seguir: " + " | ".join(texts(dump(quiet=True))[:6])[:220])
+    keys(LEFT, wait=4)  # regresa 10 s
+    shot("vivo_regresar_10s")
+    keys(BACK, wait=7)  # vuelve al vivo
+    shot("vivo_de_nuevo")
+    still = "PlayerActivity" in top_activity()
+    log("OK" if still else "FALLO", "Atrás con la pausa puesta vuelve al vivo (sin salir del reproductor)" if still
+        else "Atrás con la pausa puesta cerró el reproductor")
+    keys(9, 10, wait=5)  # teclea "23": va al canal 23
+    shot("vivo_canal_23")
+    log("INFO", "Después de teclear 23: " + " | ".join(texts(dump(quiet=True))[:6])[:220])
+    keys(82, wait=2)  # ≡ opciones
+    shot("vivo_opciones")
+    log("INFO", "Opciones: " + " | ".join(texts(dump(quiet=True))[:10])[:300])
+    keys(BACK, wait=1)
+    log("OK" if app_alive() else "FALLO", "Pausa, regresar, volver al vivo, número de canal y opciones sin cierres")
+    keys(BACK, wait=1.5)
+    keys(BACK, wait=1.0)
+    keys(BACK, wait=1.0)
+
+
 @step("buscar")
 def search():
     t0 = qa_open("Search")
@@ -526,6 +563,7 @@ def main():
         movie_detail()
         series_detail()
         live_channel()
+        live_extras()
         search()
         settings()
         reopen()

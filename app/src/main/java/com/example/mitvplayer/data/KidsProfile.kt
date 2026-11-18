@@ -24,7 +24,7 @@ class KidsProfile(context: Context) {
     /** Cambios hechos a mano: "LIVE:12" → true (se ve en el perfil) o false (no se ve). */
     private var overrides by mutableStateOf(load())
 
-    fun setActive(on: Boolean) {
+    fun turn(on: Boolean) {
         active = on
         prefs.edit().putBoolean(KEY_ACTIVE, on).apply()
     }
