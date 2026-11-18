@@ -19,6 +19,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.mitvplayer.Config
 import com.example.mitvplayer.MiTvApp
 import com.example.mitvplayer.PlayItem
+import com.example.mitvplayer.PlaybackQueue
+import com.example.mitvplayer.liveItemFor
+import com.example.mitvplayer.data.AppNotice
+import com.example.mitvplayer.data.AppNotices
+import com.example.mitvplayer.data.KidsProfile
 import com.example.mitvplayer.PlayerActivity
 import com.example.mitvplayer.ResumeTag
 import com.example.mitvplayer.RecordingManager
@@ -82,6 +87,7 @@ sealed interface Screen {
     data object Recordings : Screen
     data object Continue : Screen
     data class EpgGrid(val categoryId: String, val title: String) : Screen
+    data object KidsCategories : Screen
 }
 
 /** Estado de la búsqueda de versiones nuevas. */
@@ -102,6 +108,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     /** Control parental: PIN y bloqueo de las categorías para adultos. */
     val parental = ParentalControl(application)
+
+    /** Perfil Niños: solo categorías infantiles; para salir hace falta el PIN. */
+    val kids = KidsProfile(application)
 
     // -------------------------------------------------------------- navegación
 
@@ -202,7 +211,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         fetch = { force, progress -> repo.liveCatalog(force, progress) },
         favorites = { repo.library?.favLive },
         recents = { repo.library?.recentLive },
-        hideAdult = { parental.locked }
+        hideAdult = { parental.locked },
+        kidsOnly = { kids.active },
+        kidsAllows = { kids.allows(Kind.LIVE, it) }
     )
 
     /** La radio son las categorías de En vivo cuyo nombre dice "radio". */
@@ -213,7 +224,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         favorites = { repo.library?.favLive },
         recents = { repo.library?.recentLive },
         categoryFilter = { it.name.contains("radio", ignoreCase = true) },
-        hideAdult = { parental.locked }
+        hideAdult = { parental.locked },
+        kidsOnly = { kids.active },
+        kidsAllows = { kids.allows(Kind.LIVE, it) }
     )
 
     val movies = BrowseState<Movie>(
@@ -222,7 +235,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         fetch = { force, progress -> repo.movieCatalog(force, progress) },
         favorites = { repo.library?.favMovies },
         recents = { repo.library?.recentMovies },
-        hideAdult = { parental.locked }
+        hideAdult = { parental.locked },
+        kidsOnly = { kids.active },
+        kidsAllows = { kids.allows(Kind.MOVIES, it) }
     )
 
     val series = BrowseState<SeriesItem>(
@@ -231,7 +246,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         fetch = { force, progress -> repo.seriesCatalog(force, progress) },
         favorites = { repo.library?.favSeries },
         recents = { repo.library?.recentSeries },
-        hideAdult = { parental.locked }
+        hideAdult = { parental.locked },
+        kidsOnly = { kids.active },
+        kidsAllows = { kids.allows(Kind.SERIES, it) }
     )
 
     // ----------------------------------------------------------- pantalla múltiple
@@ -307,6 +324,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                 stack = listOf(Screen.Home)
                 preload()
                 checkForUpdate()
+                loadNotices()
                 return
             } catch (e: CancellationException) {
                 throw e
@@ -331,6 +349,44 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             jobs.awaitAll()
             com.example.mitvplayer.data.PerfLog.log { "las tres listas listas en ${com.example.mitvplayer.data.PerfLog.ms(started)} ms" }
         }
+    }
+
+    // ----------------------------------------------------------- perfil Niños
+
+    /** Pone o quita el perfil Niños (quitarlo pide el PIN antes, en la pantalla). */
+    fun setKidsMode(on: Boolean) {
+        kids.setActive(on)
+        if (on) parental.lock()
+        live.ensureSelectionVisible()
+        radio.ensureSelectionVisible()
+        movies.ensureSelectionVisible()
+        series.ensureSelectionVisible()
+    }
+
+    // --------------------------------------------------- avisos de Red Max Plus
+
+    /** Avisos vigentes que publica el dueño de la app (docs/avisos.json en GitHub). */
+    var notices by mutableStateOf<List<AppNotice>>(emptyList())
+        private set
+
+    /** Aviso que se muestra al abrir la app (el primero que aún no se ha visto). */
+    var noticeToShow by mutableStateOf<AppNotice?>(null)
+        private set
+
+    fun loadNotices() {
+        if (Config.QA_BUILD) return
+        val app = getApplication<Application>()
+        viewModelScope.launch {
+            val list = AppNotices.fetch()
+            notices = list
+            noticeToShow = list.firstOrNull { it.always || !AppNotices.seen(app, it.id) }
+        }
+    }
+
+    fun dismissNotice() {
+        val shown = noticeToShow ?: return
+        AppNotices.markSeen(getApplication(), shown.id)
+        noticeToShow = null
     }
 
     /** Vuelve a esconder el contenido para adultos. */
@@ -476,15 +532,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     fun playLive(context: Context, channels: List<LiveChannel>, index: Int) {
         channels.getOrNull(index)?.let { markWatched(it) }
-        val playItems = channels.map { channel ->
-            PlayItem(
-                title = if (channel.number > 0) "${channel.number}  ${channel.name}" else channel.name,
-                subtitle = null,
-                url = repo.liveUrl(channel.id),
-                isLive = true,
-                streamId = channel.id
-            )
-        }
+        val playItems = channels.map { channel -> liveItemFor(channel, repo.liveUrl(channel.id)) }
+        // Para ir a un canal por su número aunque no esté en esta lista (respeta el control parental y el perfil Niños).
+        PlaybackQueue.directory = live.visibleItems
         PlayerActivity.start(context, playItems, index)
     }
 

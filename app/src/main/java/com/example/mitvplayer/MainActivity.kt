@@ -15,8 +15,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.example.mitvplayer.ui.Opt
-import com.example.mitvplayer.ui.OptionsDialog
 import com.example.mitvplayer.ui.AccountScreen
 import com.example.mitvplayer.ui.AppViewModel
 import com.example.mitvplayer.ui.ContinueScreen
@@ -27,6 +25,7 @@ import com.example.mitvplayer.ui.EpgCategoriesScreen
 import com.example.mitvplayer.ui.EpgChannelsScreen
 import com.example.mitvplayer.ui.EpgGridScreen
 import com.example.mitvplayer.ui.HomeScreen
+import com.example.mitvplayer.ui.KidsCategoriesScreen
 import com.example.mitvplayer.ui.LiveScreen
 import com.example.mitvplayer.ui.LoginScreen
 import com.example.mitvplayer.ui.MiTvTheme
@@ -66,9 +65,27 @@ class MainActivity : ComponentActivity() {
         MainActivityQa(viewModel, intent?.getStringExtra("qa_open"))
     }
 
+    /**
+     * Si la app se cerró sola la vez anterior, se le avisa al dueño al celular en segundo plano (FailureReport).
+     * El cliente no ve nada ni tiene que mandar fotos. Si no hay internet, se intenta la próxima vez que se abra.
+     */
+    private fun reportLastCrash() {
+        val app = applicationContext
+        val details = CrashLog.read(app) ?: return
+        Thread({
+            val user = try {
+                (app as MiTvApp).repository.savedCredentials()?.username
+            } catch (e: Exception) {
+                null
+            }
+            if (FailureReport.crashBlocking(app, details, user)) CrashLog.clear(app)
+        }, "aviso-cierre").start()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (Config.QA_BUILD) qaOpen(intent)
+        reportLastCrash()
         setContent {
             MiTvTheme {
                 Surface(
@@ -77,7 +94,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     AppRoot(viewModel)
                     com.example.mitvplayer.ui.TvKeyboardHost()
-                    LastCrashNotice()
                 }
             }
         }
@@ -95,20 +111,6 @@ private fun MainActivityQa(vm: AppViewModel, name: String?) {
         else -> null
     } ?: return
     vm.qaOpen(screen)
-}
-
-/** Si la app se cerró sola la vez anterior, muestra el motivo una vez (para mandarlo en foto). */
-@Composable
-private fun LastCrashNotice() {
-    val context = LocalContext.current
-    var text by remember { mutableStateOf(CrashLog.read(context)) }
-    val shown = text ?: return
-    OptionsDialog(
-        title = "La app se cerró la última vez",
-        message = "Toma una foto de este mensaje y mándala a soporte:\n\n$shown",
-        options = listOf(Opt("Entendido") { CrashLog.clear(context); text = null }),
-        onDismiss = { CrashLog.clear(context); text = null }
-    )
 }
 
 @Composable
@@ -163,5 +165,6 @@ private fun AppRoot(vm: AppViewModel) {
         Screen.Settings -> SettingsScreen(vm)
         Screen.Recordings -> RecordingsScreen(vm)
         Screen.Continue -> ContinueScreen(vm)
+        Screen.KidsCategories -> KidsCategoriesScreen(vm)
     }
 }

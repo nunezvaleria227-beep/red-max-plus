@@ -31,6 +31,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.PlayArrow
@@ -106,7 +107,11 @@ fun HomeScreen(vm: AppViewModel) {
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     var confirmExit by remember { mutableStateOf(false) }
     var showMore by remember { mutableStateOf(false) }
+    var showProfile by remember { mutableStateOf(false) }
+    /** Algo que pide el PIN antes (salir del perfil Niños o abrir Ajustes con el perfil puesto). */
+    var pinFor by remember { mutableStateOf<Pair<String, () -> Unit>?>(null) }
     val heroPlay = remember { FocusRequester() }
+    val kidsMode = vm.kids.active
 
     LaunchedEffect(Unit) {
         vm.live.ensureLoaded()
@@ -167,12 +172,18 @@ fun HomeScreen(vm: AppViewModel) {
         RailItem("Guía", onClick = { vm.open(Screen.Epg) }) { tint ->
             GlyphIcon(Glyph.EPG, Modifier.size(20.dp), tint)
         },
+        RailItem(if (kidsMode) "Niños" else "Perfil", active = kidsMode, onClick = { showProfile = true }) { tint ->
+            Icon(Icons.Filled.Face, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp))
+        },
         RailItem("Más", onClick = { showMore = true }) { tint ->
             GlyphIcon(Glyph.GRID, Modifier.size(20.dp), tint)
         }
     )
     val railBottom = listOf(
-        RailItem("Ajustes", onClick = { vm.open(Screen.Settings) }) { tint ->
+        RailItem("Ajustes", onClick = {
+            // Con el perfil Niños puesto, Ajustes pide el PIN (ahí se cambia el control parental).
+            if (kidsMode) pinFor = "Para abrir Ajustes." to { vm.open(Screen.Settings) } else vm.open(Screen.Settings)
+        }) { tint ->
             Icon(Icons.Filled.Settings, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp))
         },
         RailItem("Salir", onClick = { confirmExit = true }) { tint ->
@@ -243,6 +254,74 @@ fun HomeScreen(vm: AppViewModel) {
     }
 
     UpdateDialogs(vm)
+
+    // Aviso del dueño de la app (mantenimiento, promociones…), una vez por aparato.
+    val notice = vm.noticeToShow
+    val updatePrompt = vm.update is UpdateState.Downloading || (vm.update is UpdateState.Available && !vm.updateDismissed)
+    if (notice != null && !updatePrompt) {
+        OptionsDialog(
+            title = notice.title,
+            message = notice.message,
+            options = listOf(Opt("Entendido") { }),
+            onDismiss = { vm.dismissNotice() }
+        )
+    }
+
+    if (showProfile) {
+        if (kidsMode) {
+            OptionsDialog(
+                title = "Perfil Niños",
+                message = "Solo se ven las categorías infantiles. Para salir hace falta el PIN.",
+                options = listOf(
+                    Opt("Salir del perfil Niños (PIN)") {
+                        pinFor = "Para salir del perfil Niños." to { vm.setKidsMode(false) }
+                    },
+                    Opt("Cancelar") { }
+                ),
+                onDismiss = { showProfile = false }
+            )
+        } else if (!vm.parental.hasPin) {
+            OptionsDialog(
+                title = "Perfil Niños",
+                message = "Muestra solo las categorías infantiles (caricaturas, Disney, niños, familia…). " +
+                    "Primero pon un PIN en Ajustes → Control parental, para que los niños no puedan salir solos.",
+                options = listOf(
+                    Opt("Ir a Ajustes") { vm.open(Screen.Settings) },
+                    Opt("Cancelar") { }
+                ),
+                onDismiss = { showProfile = false }
+            )
+        } else {
+            OptionsDialog(
+                title = "Perfil",
+                message = "En el perfil Niños solo se ven las categorías infantiles. Para salir hará falta el PIN.",
+                options = listOf(
+                    Opt("Cambiar a perfil Niños") { vm.setKidsMode(true) },
+                    Opt("Seguir en el perfil principal") { }
+                ),
+                onDismiss = { showProfile = false }
+            )
+        }
+    }
+
+    val pinRequest = pinFor
+    if (pinRequest != null) {
+        PinDialog(
+            title = "Escribe tu PIN",
+            message = pinRequest.first,
+            onSubmit = { pin ->
+                if (vm.parental.verify(pin)) {
+                    pinFor = null
+                    pinRequest.second()
+                    null
+                } else {
+                    val wait = vm.parental.waitSeconds()
+                    if (wait > 0) "Demasiados intentos. Espera $wait s." else "PIN incorrecto"
+                }
+            },
+            onDismiss = { pinFor = null }
+        )
+    }
 
     if (showMore) {
         OptionsDialog(
