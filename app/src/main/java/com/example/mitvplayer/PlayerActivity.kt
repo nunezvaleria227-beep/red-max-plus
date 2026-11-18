@@ -254,7 +254,8 @@ class PlayerActivity : ComponentActivity() {
         // Al pausar la TV en vivo se suelta la conexión: la última imagen se queda en pantalla.
         playerView.setKeepContentOnPlayerReset(true)
         // Lo que haya quedado de una pausa anterior (por ejemplo, si se cerró la app) se borra.
-        Thread({ File(cacheDir, PAUSE_DIR).deleteRecursively() }, "pausa-limpiar").start()
+        val leftovers = File(cacheDir, PAUSE_DIR).listFiles().orEmpty()
+        if (leftovers.isNotEmpty()) Thread({ leftovers.forEach { it.deleteRecursively() } }, "pausa-limpiar").start()
 
         btnSubtitles.setOnClickListener { showSubtitleDialog() }
         btnSize.setOnClickListener { showSizeDialog() }
