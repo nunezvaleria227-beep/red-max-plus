@@ -1,0 +1,125 @@
+# Prueba QA de Red Max Plus
+
+- **INFO** Pantalla de inicio de sesión dibujada a 3304 ms de abrir la app
+- **OK** Entró a la app: el inicio se dibujó a 550 ms de pulsar Entrar
+- **TRABON** 977 ms en entrar :: 88% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 1% String.getChars:780 < AbstractStringBuilder.append:449 || 1% ConnectionPool.<init>:28 < AnchoredGroupPath.snapshotFlow:9 ... ComponentsKt$PosterCard$1.invoke:700
+- **TRABON** 517 ms en entrar :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 184 ms en entrar :: 50% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 50% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+- **OK** Abrir movies: lista en pantalla a 348 ms; peor trabón 184 ms (LISTO películas (80 elementos, 11 filas) a 348 ms de abrir Movies)
+- **TRABON** 184 ms en abrir movies :: 28% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 14% DrawScope.getSize-NH-jbRc:1 < LayoutNodeDrawScope.getSize-NH-jbRc:2 || 14% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 173 ms en abrir movies :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 164 ms en abrir movies :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **INFO** Lista LIVE: 60 elementos y 8 categorías, lista en 171 ms
+- **INFO** Lista SERIES: 30 elementos y 6 categorías, lista en 181 ms
+- **INFO** Lista MOVIES: 80 elementos y 8 categorías, lista en 1113 ms
+- **INFO** Medición interna: lista live: categorías 11 ms, descarga 59 ms (20 KB), lectura e índices 48 ms, 62 elementos
+- **INFO** Medición interna: lista series: categorías 58 ms, descarga 68 ms (17 KB), lectura e índices 12 ms, 31 elementos
+- **INFO** Medición interna: lista movies: categorías 23 ms, descarga 78 ms (27 KB), lectura e índices 61 ms, 83 elementos
+- **OK** Abrir live: lista en pantalla a 183 ms; peor trabón 155 ms (LISTO TV en vivo (60 canales, 10 filas) a 183 ms de abrir Live)
+- **TRABON** 155 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 102 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** live · cambiar categorías: 6 trabones, peor 127 ms, total 661 ms
+- **TRABON** 127 ms en live · cambiar categorías :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 117 ms en live · cambiar categorías :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** live · bajar por la lista: 1 trabones, peor 153 ms, total 153 ms
+- **TRABON** 153 ms en live · bajar por la lista :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** Abrir movies: lista en pantalla a 147 ms; peor trabón 105 ms (LISTO películas (80 elementos, 11 filas) a 147 ms de abrir Movies)
+- **TRABON** 105 ms en abrir movies :: 50% SuspendLambda.<init>:1 < AnimateAsStateKt$animateValueAsState$3$1.<init>:10 ... PosterGridScreenKt$PosterGridScreen$3$1$2$4$1$invoke$lambda$5$lambda$4$$inlined$itemsIndexed$default$4.invoke:312 || 50% AnchoredGroupPath.access$hasAux:1 < ComposerImpl.end:84 ... PosterGridScreenKt$PosterGridScreen$3$1$2$4$1$invoke$lambda$5$lambda$4$$inlined$itemsIndexed$default$4.invoke:312
+- **OK** movies · cambiar categorías: 10 trabones, peor 158 ms, total 1261 ms
+- **TRABON** 158 ms en movies · cambiar categorías :: 60% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 20% CancellableContinuationImpl.releaseClaimedReusableContinuation$kotlinx_coroutines_core:1 < CancellableContinuationImpl.getResult:114 || 20% InfiniteTransitionKt$animateValue$2$1$invoke$$inlined$onDispose$1.dispose:1 < DisposableEffectImpl.onForgotten:5
+- **TRABON** 154 ms en movies · cambiar categorías :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** movies · bajar por la lista: 2 trabones, peor 154 ms, total 261 ms
+- **TRABON** 154 ms en movies · bajar por la lista :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 107 ms en movies · bajar por la lista :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** Abrir series: lista en pantalla a 259 ms; peor trabón 185 ms (LISTO series (30 elementos, 9 filas) a 259 ms de abrir SeriesList)
+- **TRABON** 185 ms en abrir series :: 16% LockFreeLinkedListNode.<init>:1 < JobSupport.promoteSingleToNodeList:3 ... ComponentsKt$PosterCard$1.invoke:700 < PosterGridScreenKt$PosterGridScreen$3$1$2$4$1$invoke$lambda$5$lambda$4$$inlined$itemsIndexed$default$4.invoke:312 || 16% LinkedHashMap.afterNodeInsertion:323 < HashMap.putVal:663 || 16% LinearGradient.nativeCreate:-2 < LinearGradient.createNativeInstance:156
+- **TRABON** 146 ms en abrir series :: 75% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 25% Color.red:723 < Paint.setAlpha:1094
+- **TRABON** 134 ms en abrir series :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** series · cambiar categorías: 1 trabones, peor 134 ms, total 134 ms
+- **TRABON** 134 ms en series · cambiar categorías :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** series · bajar por la lista: 0 trabones, peor 0 ms, total 0 ms
+- **OK** Abrir live: lista en pantalla a 108 ms; peor trabón 103 ms (LISTO TV en vivo (1 canales, 10 filas) a 108 ms de abrir Live)
+- **TRABON** 103 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** live · cambiar categorías: 4 trabones, peor 188 ms, total 605 ms
+- **TRABON** 188 ms en live · cambiar categorías :: 50% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 16% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 16% HardwareRenderer.nPause:-2 < HardwareRenderer.pause:456
+- **TRABON** 187 ms en live · cambiar categorías :: 85% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 14% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+- **OK** live · bajar por la lista: 0 trabones, peor 0 ms, total 0 ms
+- **OK** Abrir movies: lista en pantalla a 175 ms; peor trabón 125 ms (LISTO películas (1 elementos, 11 filas) a 175 ms de abrir Movies)
+- **TRABON** 125 ms en abrir movies :: 75% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 25% InsetsState.getSourceOrDefaultVisibility:394 < InsetsController.onControlsChanged:770
+- **OK** movies · cambiar categorías: 4 trabones, peor 182 ms, total 586 ms
+- **TRABON** 182 ms en movies · cambiar categorías :: 42% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 42% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 14% SurfaceControl.nativeReadFromParcel:-2 < SurfaceControl.readFromParcel:1032
+- **TRABON** 148 ms en movies · cambiar categorías :: 25% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 25% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 25% Parcel.nativeReadString16:-2 < Parcel.readString16NoHelper:2459
+- **OK** movies · bajar por la lista: 0 trabones, peor 0 ms, total 0 ms
+- **OK** Abrir series: lista en pantalla a 119 ms; peor trabón 0 ms (LISTO series (1 elementos, 9 filas) a 119 ms de abrir SeriesList)
+- **OK** series · cambiar categorías: 4 trabones, peor 182 ms, total 578 ms
+- **TRABON** 182 ms en series · cambiar categorías :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 171 ms en series · cambiar categorías :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** series · bajar por la lista: 0 trabones, peor 0 ms, total 0 ms
+- **OK** Abrir live: lista en pantalla a 91 ms; peor trabón 0 ms (LISTO TV en vivo (1 canales, 9 filas) a 91 ms de abrir Live)
+- **OK** Abrir movies: lista en pantalla a 82 ms; peor trabón 0 ms (LISTO películas (1 elementos, 10 filas) a 82 ms de abrir Movies)
+- **OK** Abrir series: lista en pantalla a 92 ms; peor trabón 0 ms (LISTO series (1 elementos, 7 filas) a 92 ms de abrir SeriesList)
+- **OK** Abrir movies: lista en pantalla a 83 ms; peor trabón 0 ms (LISTO películas (1 elementos, 10 filas) a 83 ms de abrir Movies)
+- **FALLO** Ficha de película no abrió
+- **TRABON** 110 ms en ficha de película :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** Al pulsar OK en la ficha: adfc7d8 u0 com.redmaxplus.tv/com.example.mitvplayer.PlayerActivity t9}
+- **AVISO** Después de «ficha de película y reproducir» la app no estaba en pantalla (cord{48b6c25 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t8}); se vuelve a abrir
+- **OK** Abrir series: lista en pantalla a 141 ms; peor trabón 0 ms (LISTO series (30 elementos, 9 filas) a 141 ms de abrir SeriesList)
+- **OK** Ficha de serie abrió en 355 ms
+- **TRABON** 274 ms en ficha de serie :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 196 ms en ficha de serie :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** Abrir live: lista en pantalla a 129 ms; peor trabón 134 ms (LISTO TV en vivo (60 canales, 10 filas) a 129 ms de abrir Live)
+- **TRABON** 134 ms en abrir live :: 66% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 33% MathKt.setInt-A6tL2VI:1 < ComposerImpl.createNode:51 ... ComponentsKt$PosterCard$1.invoke:488 < LiveScreenKt$$ExternalSyntheticLambda10.invoke:29
+- **INFO** Al pulsar OK dos veces en un canal: afbed1 u0 com.redmaxplus.tv/com.example.mitvplayer.PlayerActivity t10}
+- **AVISO** Después de «canal en vivo» la app no estaba en pantalla (cord{48b6c25 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t8}); se vuelve a abrir
+- **OK** Abrir live: lista en pantalla a 103 ms; peor trabón 103 ms (LISTO TV en vivo (60 canales, 10 filas) a 103 ms de abrir Live)
+- **TRABON** 103 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **INFO** En pausa: ⏸  En pausa · guardando 0:30 · OK para seguir
+- **INFO** Al seguir: ⏪  Atrasado 0:21 · ◀ ▶ 10 s · Atrás: en vivo
+- **OK** Atrás con la pausa puesta vuelve al vivo (sin salir del reproductor)
+- **INFO** Después de teclear 23: 
+- **INFO** Opciones: Opciones | ⏸  Pausar (se sigue guardando el canal) | Canal anterior | Sincronizar audio (voz e imagen) | Tamaño de la imagen
+- **OK** Pausa, regresar, volver al vivo, número de canal y opciones sin cierres
+- **AVISO** Después de «pausa en vivo, regresar, número de canal y opciones» la app no estaba en pantalla (cord{48b6c25 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t8}); se vuelve a abrir
+- **OK** Buscar «fuego»: peor trabón 114 ms; en pantalla: Atrás | Red Max Plus | Búsqueda maestra | fuego | Todo | En vivo | Películas | Series
+- **TRABON** 114 ms en buscar :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 110 ms en buscar :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **AVISO** Después de «buscar» la app no estaba en pantalla (cord{48b6c25 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t8}); se vuelve a abrir
+- **OK** Con la sesión guardada, el inicio se dibujó a 2252 ms de abrir la app
+- **TRABON** 621 ms en abrir la app :: 90% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 3% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 3% SlotWriter.moveGroupGapTo:170 < SlotWriter.close:16
+- **TRABON** 613 ms en abrir la app :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **OK** Abrir movies: lista en pantalla a 279 ms; peor trabón 205 ms (LISTO películas (80 elementos, 11 filas) a 279 ms de abrir Movies)
+- **TRABON** 205 ms en abrir movies :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 128 ms en abrir movies :: 66% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 33% SpannableStringBuilder.obtain:1010 < SpannableStringBuilder.getSpans:878
+- **TRABON** 123 ms en abrir movies :: 25% LayoutNode.get_children$ui_release:1 < LayoutNode.getZSortedChildren:10 || 25% NodeKindKt.calculateNodeKindSetFromIncludingDelegates:1 < NodeChain.createAndInsertNodeAsChild:11 || 25% NodeCoordinator.onPlaced:1 < LayoutModifierNodeCoordinator.placeAt-f8xVGno:9
+- **OK** Abrir live: lista en pantalla a 172 ms; peor trabón 167 ms (LISTO TV en vivo (60 canales, 10 filas) a 172 ms de abrir Live)
+- **TRABON** 167 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 119 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 102 ms en abrir live :: 50% AndroidUiDispatcher.dispatch:1 < InlineList.resumeCancellableWith:44 || 50% Modifier$Node.runAttachLifecycle$ui_release:1 < DelegatingNode.runAttachLifecycle$ui_release:11
+- **INFO** Memoria: Java 15 MB, total 110 MB
+- **INFO** Cuadros lentos según Android: 38 (100.00%) — en el emulador sin GPU real esto es normal
+- **OK** Demo vencida (Expired) al abrir: aviso sí; campos vacíos; intentos con la cuenta vencida: 1; en pantalla: Red Max Plus | TV en vivo, películas y series en un solo lugar. | Entrar | Escribe el usuario y la contraseña que te dio tu proveedor. | Usuario | Contraseña | OCULTAR | Tu demostración o tu suscripción ya terminó.
+Escribe el usuario y la contraseña nuevos que
+- **OK** Al volver a abrir la app ya no prueba la demo vencida (intentos: 0)
+- **OK** Cuenta vencida (403) al abrir: aviso sí; campos vacíos; intentos con la cuenta vencida: 1; en pantalla: Red Max Plus | TV en vivo, películas y series en un solo lugar. | Entrar | Escribe el usuario y la contraseña que te dio tu proveedor. | Usuario | Contraseña | OCULTAR | El servidor no aceptó este usuario.
+Si era una demostración, ya terminó: escribe el usuari
+- **OK** Con el usuario nuevo entra a la primera
+- **OK** Abrir live: lista en pantalla a 233 ms; peor trabón 182 ms (LISTO TV en vivo (60 canales, 10 filas) a 233 ms de abrir Live)
+- **TRABON** 182 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **TRABON** 172 ms en abrir live :: 83% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 16% TransparentObserverMutableSnapshot.<init>:1 < SnapshotIdSetKt.observe:106
+- **TRABON** 127 ms en abrir live :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **INFO** Vencida viendo: en pantalla: El servidor no aceptó este usuario.
+Si era una demostración, ya terminó: escribe el usuario y la contraseña nuevos que te enviaron (mayúsculas y minúsculas cuentan).
+
+Pulsa OK o Atrás para escribir el usuario nuevo.; pedidos de video después de vencerse: 4
+- **OK** Vencida viendo: OK lleva a la entrada con el aviso
+- **OK** Vencida viendo: no se queda reintentando (4 pedidos al servidor)
+- **INFO** Trabones del hilo principal en toda la prueba: 179 (de ellos 39 por código de la app), total 36689 ms
+- **TRABON** 570 ms en la prueba :: 63% Object.wait:-2 < Object.wait:442 || 13% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStop:66 || 9% SurfaceControl.nativeApplyTransaction:-2 < SurfaceControl.access$500:82
+- **TRABON** 440 ms en la prueba :: 11% BufferedChannel.receive:1 < SnapshotStateKt__SnapshotFlowKt$snapshotFlow$1.invokeSuspend:207 ... ComponentsKt$PosterCard$1.invoke:700 || 11% LayoutNodeLayoutDelegate$MeasurePassDelegate.getParentAlignmentLinesOwner:1 < LookaheadAlignmentLines.recalculateQueryOwner:10 || 11% SnapshotIdSet.<init>:1 < SnapshotIdSet.clear:39 ... ComponentsKt$PosterCard$1.invoke:700
+- **TRABON** 325 ms en la prueba :: 54% Object.wait:-2 < Object.wait:442 || 36% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStop:66 || 9% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475
+- **TRABON** 320 ms en la prueba :: 63% Object.wait:-2 < Object.wait:442 || 27% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStop:66 || 9% SurfaceControl.nativeApplyTransaction:-2 < SurfaceControl.access$500:82
+- **TRABON** 215 ms en la prueba :: 57% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 28% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 14% BasicTextKt.notifyFocusedRect:1 < CoreTextFieldKt$CoreTextField$onPositionedModifier$1$1.invoke:128
+- **TRABON** 207 ms en la prueba :: 42% BinderProxy.transactNative:-2 < BinderProxy.transact:540 ... MainActivity.onCreate:89 || 28% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 14% EventLog.writeEvent:-2 < EventLogTags.writeWmOnCreateCalled:66
+- **TRABON** 203 ms en la prueba :: 71% Object.wait:-2 < Object.wait:442 ... LiveScreenKt$LiveScreen$4$1$3$1$1$1$1$1$1$1.invoke:66 < MainActivity.dispatchKeyEvent:10 || 14% Actual_jvmKt.materializeModifier:1 < ImageKt.Image:310 ... LiveScreenKt$$ExternalSyntheticLambda9.invoke:27 || 14% Surface.nativeForceScopedDisconnect:-2 < Surface.forceScopedDisconnect:728
+- **TRABON** 190 ms en la prueba :: 50% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStart:123 || 16% ExoPlayerImpl.createMessageInternal:29 < ExoPlayerImpl.setVideoOutputInternal:23 ... PlayerActivity.onStart:144 || 16% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+- **RESUMEN** 1 fallos, 0 cierres, 0 ANR

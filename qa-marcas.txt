@@ -1,0 +1,322 @@
+45709 INICIO pid=3723
+47625 LAG 2020 ms :: 73% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 6% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 2% SynchronizedLazyImpl.getValue:10 < MiTvApp.getRepository:3 ... MiTvApp.getRepository:3 < AppViewModel.<init>:16 < MainActivity.qaOpen:3
+47634 NAV Login dibujada
+47823 LAG 151 ms :: 60% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 40% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+53523 LAG 147 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+53848 LAG 103 ms :: 100% MessageQueue.nativePollOnce:-2 < MessageQueue.next:335
+55204 LAG 114 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+56101 LAG 250 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+57417 LAG 148 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+59436 LAG 128 ms :: 33% ContextCompat.CornerRadius:1 < RoundedCornerShape.createOutline-Pq9zytI:106 || 33% AnchoredGroupPath.currentThreadId:1 < SnapshotIdSetKt.observe:26 || 33% PathParserKt.toPath:201 < PathComponent.draw:9
+59460 CATALOGO LIVE 60 elementos, 8 categorías en 171 ms
+59470 CATALOGO SERIES 30 elementos, 6 categorías en 181 ms
+59470 NAV Home dibujada
+60402 CATALOGO MOVIES 80 elementos, 8 categorías en 1113 ms
+60457 LAG 977 ms :: 88% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 1% String.getChars:780 < AbstractStringBuilder.append:449 || 1% ConnectionPool.<init>:28 < AnchoredGroupPath.snapshotFlow:9 ... ComponentsKt$PosterCard$1.invoke:700
+60639 LAG 179 ms :: 33% IntStack.<init>:1 < SlotWriter.<init>:55 || 33% Unsafe.unpark:-2 < LockSupport.unpark:156 ... AppViewModel.loadMovieInfo:72 < HomeScreenKt$HomeScreen$3$1.invokeSuspend:48 || 33% GraphicsLayerOwnerLayer.updateLayerProperties:1 < NodeCoordinator.updateLayerParameters:278
+60865 LAG 184 ms :: 50% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 50% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+61371 LAG 517 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+61502 LAG 146 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+61674 LAG 164 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+61957 LAG 109 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+65537 ABRIR Movies
+65741 LAG 184 ms :: 28% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 14% DrawScope.getSize-NH-jbRc:1 < LayoutNodeDrawScope.getSize-NH-jbRc:2 || 14% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+65885 NAV Movies dibujada en 348 ms
+65885 LISTO películas (80 elementos, 11 filas) a 348 ms de abrir Movies
+65898 LAG 164 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+66055 LAG 163 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+66534 LAG 173 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+68182 ABRIR Home
+68321 LAG 127 ms :: 25% AnimationEndReason$EnumUnboxingLocalUtility.m:1 < TypefaceRequest.hashCode:23 || 25% RenderNode.hasIdentityMatrix:475 < View.hasIdentityMatrix:16573 || 25% SlotWriter.moveGroupGapTo:1 < SlotWriter.insertGroups:5
+68376 NAV Home dibujada en 194 ms
+68426 LAG 112 ms :: 50% SlotReader.aux:1 < ComposerImpl.end:215 || 50% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+75122 ABRIR Live
+75305 NAV Live dibujada en 183 ms
+75305 LISTO TV en vivo (60 canales, 10 filas) a 183 ms de abrir Live
+75410 LAG 102 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+75688 LAG 155 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+75831 LAG 139 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+78612 LAG 103 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+79360 LAG 127 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+79575 LAG 117 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+79788 LAG 107 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+80331 LAG 106 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+81318 LAG 101 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+85261 LAG 153 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+87768 ABRIR Home
+87892 NAV Home dibujada en 124 ms
+89202 ABRIR Movies
+89311 LAG 105 ms :: 50% SuspendLambda.<init>:1 < AnimateAsStateKt$animateValueAsState$3$1.<init>:10 ... PosterGridScreenKt$PosterGridScreen$3$1$2$4$1$invoke$lambda$5$lambda$4$$inlined$itemsIndexed$default$4.invoke:312 || 50% AnchoredGroupPath.access$hasAux:1 < ComposerImpl.end:84 ... PosterGridScreenKt$PosterGridScreen$3$1$2$4$1$invoke$lambda$5$lambda$4$$inlined$itemsIndexed$default$4.invoke:312
+89349 NAV Movies dibujada en 147 ms
+89349 LISTO películas (80 elementos, 11 filas) a 147 ms de abrir Movies
+92600 LAG 122 ms :: 33% Cleaner.add:0 < Cleaner.create:133 || 33% RenderNode.nCreate:-2 < RenderNode.<init>:227 || 33% MathKt.equals-impl0:1 < AndroidParagraph.<init>:221
+92862 LAG 117 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+93005 LAG 139 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+93481 LAG 137 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+93784 LAG 158 ms :: 60% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 20% CancellableContinuationImpl.releaseClaimedReusableContinuation$kotlinx_coroutines_core:1 < CancellableContinuationImpl.getResult:114 || 20% InfiniteTransitionKt$animateValue$2$1$invoke$$inlined$onDispose$1.dispose:1 < DisposableEffectImpl.onForgotten:5
+94025 LAG 117 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+94296 LAG 111 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+94839 LAG 106 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+95014 LAG 100 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+95321 LAG 154 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+97792 LAG 154 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+99577 LAG 107 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+101981 ABRIR Home
+102106 NAV Home dibujada en 125 ms
+103461 ABRIR SeriesList
+103671 LAG 185 ms :: 16% LockFreeLinkedListNode.<init>:1 < JobSupport.promoteSingleToNodeList:3 ... ComponentsKt$PosterCard$1.invoke:700 < PosterGridScreenKt$PosterGridScreen$3$1$2$4$1$invoke$lambda$5$lambda$4$$inlined$itemsIndexed$default$4.invoke:312 || 16% LinkedHashMap.afterNodeInsertion:323 < HashMap.putVal:663 || 16% LinearGradient.nativeCreate:-2 < LinearGradient.createNativeInstance:156
+103720 NAV SeriesList dibujada en 259 ms
+103721 LISTO series (30 elementos, 9 filas) a 259 ms de abrir SeriesList
+103877 LAG 146 ms :: 75% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 25% Color.red:723 < Paint.setAlpha:1094
+104015 LAG 132 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+104143 LAG 134 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+104355 LAG 132 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+107246 LAG 134 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+115785 ABRIR Home
+115890 NAV Home dibujada en 105 ms
+116118 LAG 112 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+117234 ABRIR Live
+117342 NAV Live dibujada en 108 ms
+117342 LISTO TV en vivo (1 canales, 10 filas) a 108 ms de abrir Live
+117403 LAG 103 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+118923 LAG 188 ms :: 50% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 16% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 16% HardwareRenderer.nPause:-2 < HardwareRenderer.pause:456
+119100 LAG 124 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+119911 LAG 187 ms :: 85% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 14% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+120011 LAG 106 ms :: 100% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475
+129501 ABRIR Movies
+129638 LAG 125 ms :: 75% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 25% InsetsState.getSourceOrDefaultVisibility:394 < InsetsController.onControlsChanged:770
+129676 NAV Movies dibujada en 175 ms
+129676 LISTO películas (1 elementos, 11 filas) a 175 ms de abrir Movies
+131536 LAG 148 ms :: 25% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 25% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 25% Parcel.nativeReadString16:-2 < Parcel.readString16NoHelper:2459
+131755 LAG 182 ms :: 42% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 42% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 14% SurfaceControl.nativeReadFromParcel:-2 < SurfaceControl.readFromParcel:1032
+132883 LAG 129 ms :: 66% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 33% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+133083 LAG 127 ms :: 66% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 33% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+142444 ABRIR SeriesList
+142563 NAV SeriesList dibujada en 119 ms
+142563 LISTO series (1 elementos, 9 filas) a 119 ms de abrir SeriesList
+144299 LAG 105 ms :: 50% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 50% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+144435 LAG 120 ms :: 66% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 33% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+144662 LAG 182 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+145413 LAG 171 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+154836 ABRIR Live
+154927 NAV Live dibujada en 91 ms
+154927 LISTO TV en vivo (1 canales, 9 filas) a 91 ms de abrir Live
+156409 ABRIR Home
+156521 NAV Home dibujada en 112 ms
+157860 ABRIR Movies
+157941 NAV Movies dibujada en 81 ms
+157942 LISTO películas (1 elementos, 10 filas) a 82 ms de abrir Movies
+159331 ABRIR Home
+159449 LAG 107 ms :: 33% Paint.measureText:2229 < MathKt.getEllipsizedLeftPadding:41 || 33% AnchoredGroupPath.mutableStateOf:1 < AnchoredGroupPath.rememberUpdatedState:11 || 33% LayoutNodeDrawScope.getFontScale:0 < ParagraphLayoutCache.setDensity$foundation_release:11
+159471 NAV Home dibujada en 140 ms
+160770 ABRIR SeriesList
+160862 NAV SeriesList dibujada en 92 ms
+160862 LISTO series (1 elementos, 7 filas) a 92 ms de abrir SeriesList
+162261 ABRIR Home
+162367 NAV Home dibujada en 106 ms
+163831 ABRIR Movies
+163912 NAV Movies dibujada en 81 ms
+163914 LISTO películas (1 elementos, 10 filas) a 83 ms de abrir Movies
+167397 ABRIR Home
+167496 NAV Home dibujada en 99 ms
+167653 LAG 110 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+202321 LAG 219 ms :: 100% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475
+212589 LAG 281 ms :: 60% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 10% WindowConfiguration.setActivityType:360 < WindowConfiguration.setToDefaults:402 || 10% CanvasDrawScope.getDrawContext:1 < GraphicsLayerOwnerLayer.drawLayer:58
+212903 LAG 325 ms :: 54% Object.wait:-2 < Object.wait:442 || 36% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStop:66 || 9% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475
+214589 LAG 110 ms :: 100% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+217648 NAV Login dibujada
+217651 LAG 251 ms :: 50% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 10% ImageDecoder.nDecodeBitmap:-2 < ImageDecoder.decodeBitmapInternal:1712 ... LoginScreenKt$LoginScreen$1.invoke:1886 < ThemeKt.AppBackground:331 < Config.AppRoot:165 || 10% ScrollableStateKt$rememberScrollableState$1$1.<init>:1 < TextFieldScrollKt$textFieldScrollable$2.invoke:98 ... LoginScreenKt$LoginScreen$1.invoke:2816 < ThemeKt.AppBackground:331 < Config.AppRoot:165
+217778 CATALOGO MOVIES 80 elementos, 8 categorías en 132 ms
+217778 CATALOGO LIVE 60 elementos, 8 categorías en 132 ms
+217779 CATALOGO SERIES 30 elementos, 6 categorías en 133 ms
+217787 LAG 134 ms :: 66% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 33% Object.internalClone:-2 < Object.clone:259 ... FormatKt.formatDateLong:7 < Config.AppRoot:189 < UpdateUiKt$$ExternalSyntheticLambda0.invoke:199
+217923 NAV Home dibujada en 50525 ms
+217944 LAG 147 ms :: 20% ChannelFlow$collectToFun$1.<init>:1 < ChannelFlow$collect$2.invokeSuspend:44 ... ComponentsKt$PosterCard$1.invoke:700 || 20% SpannableString.getSpans:24 < MeasuredParagraph.resetAndAnalyzeBidi:461 || 20% Intrinsics.areEqual:1 < NodeCoordinator.updateLayerParameters:150
+218117 LAG 113 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+223442 ABRIR SeriesList
+223583 NAV SeriesList dibujada en 141 ms
+223583 LISTO series (30 elementos, 9 filas) a 141 ms de abrir SeriesList
+226125 LAG 102 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+227145 ABRIR SeriesDetails
+227375 NAV SeriesDetails dibujada en 230 ms
+227391 LAG 182 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+227562 LAG 183 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+227771 LAG 196 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+227981 LAG 103 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+228166 LAG 193 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+228444 LAG 274 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+232205 LAG 173 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+234085 ABRIR SeriesList
+234216 NAV SeriesList dibujada en 131 ms
+234216 LISTO series (30 elementos, 9 filas) a 131 ms de abrir SeriesList
+234482 LAG 179 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+234597 LAG 106 ms :: 100% MessageQueue.nativePollOnce:-2 < MessageQueue.next:335
+235663 ABRIR Home
+235785 NAV Home dibujada en 122 ms
+236014 LAG 120 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+237228 ABRIR Live
+237357 NAV Live dibujada en 129 ms
+237357 LISTO TV en vivo (60 canales, 10 filas) a 129 ms de abrir Live
+237538 LAG 134 ms :: 66% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 33% MathKt.setInt-A6tL2VI:1 < ComposerImpl.createNode:51 ... ComponentsKt$PosterCard$1.invoke:488 < LiveScreenKt$$ExternalSyntheticLambda10.invoke:29
+237651 LAG 118 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+240928 LAG 119 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+248984 LAG 134 ms :: 75% Object.wait:-2 < Object.wait:442 ... LiveScreenKt$LiveScreen$4$1$3$1$1$1$1$1$1$1.invoke:66 < MainActivity.dispatchKeyEvent:10 || 25% BinderProxy.transactNative:-2 < BinderProxy.transact:540 ... Config.start:13 < AppViewModel.playLive:90 < LiveScreenKt$LiveScreen$4$1$3$1$1$1$1$1$1$1.invoke:92
+249292 LAG 151 ms :: 80% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 20% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+257533 LAG 201 ms :: 80% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 20% Paint.setShader:1236 < AndroidTextPaint.setColor-8_81llA:21
+258144 LAG 570 ms :: 63% Object.wait:-2 < Object.wait:442 || 13% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStop:66 || 9% SurfaceControl.nativeApplyTransaction:-2 < SurfaceControl.access$500:82
+259426 ABRIR Home
+259527 NAV Home dibujada en 101 ms
+259761 LAG 120 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+261323 LAG 141 ms :: 100% HardwareRenderer.nDestroy:-2 < HardwareRenderer.destroy:185
+262751 LAG 215 ms :: 57% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 28% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 14% BasicTextKt.notifyFocusedRect:1 < CoreTextFieldKt$CoreTextField$onPositionedModifier$1$1.invoke:128
+262755 NAV Login dibujada
+262826 CATALOGO LIVE 60 elementos, 8 categorías en 80 ms
+262826 CATALOGO SERIES 30 elementos, 6 categorías en 80 ms
+262826 CATALOGO MOVIES 80 elementos, 8 categorías en 80 ms
+262943 NAV Home dibujada en 3517 ms
+262951 LAG 122 ms :: 50% InlineList.threadContextElements:1 < InlineList.updateThreadContext:3 ... ComponentsKt$PosterCard$1.invoke:700 || 50% NodeCoordinator.getDensity:1 < CanvasDrawScope.getDensity:5
+263208 LAG 111 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+268566 ABRIR Live
+268669 NAV Live dibujada en 103 ms
+268669 LISTO TV en vivo (60 canales, 10 filas) a 103 ms de abrir Live
+268867 LAG 103 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+279378 LAG 217 ms :: 88% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 11% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+279507 LAG 134 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+279773 LAG 100 ms :: 100% MessageQueue.nativePollOnce:-2 < MessageQueue.next:335
+313064 LAG 133 ms :: 100% View.getDrawableRenderNode:22616 < View.drawBackground:22568
+313789 LAG 116 ms :: 50% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 50% MessageQueue.nativePollOnce:-2 < MessageQueue.next:335
+330910 LAG 287 ms :: 85% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 14% Locale.toLanguageTag:1521 < LocaleList.<init>:178
+332796 LAG 126 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+332912 LAG 130 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+337920 LAG 152 ms :: 100% BinderProxy.transactNative:-2 < BinderProxy.transact:540 ... PlayerActivity.dispatchKeyEvent:948
+338242 LAG 327 ms :: 90% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 9% RenderNode.nSetDisplayList:-2 < RenderNode.endRecording:410
+338568 LAG 320 ms :: 63% Object.wait:-2 < Object.wait:442 || 27% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStop:66 || 9% SurfaceControl.nativeApplyTransaction:-2 < SurfaceControl.access$500:82
+339943 ABRIR Home
+340058 NAV Home dibujada en 115 ms
+343415 LAG 340 ms :: 46% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 23% HardwareRenderer.nPause:-2 < HardwareRenderer.pause:456 || 7% TextFieldImplKt.CommonDecorationBox:0 < OutlinedTextFieldDefaults.DecorationBox:8 ... LoginScreenKt$LoginScreen$1.invoke:3106 < ThemeKt.AppBackground:331 < Config.AppRoot:165
+343465 NAV Login dibujada
+343510 CATALOGO MOVIES 80 elementos, 8 categorías en 74 ms
+343511 CATALOGO SERIES 30 elementos, 6 categorías en 75 ms
+343512 CATALOGO LIVE 60 elementos, 8 categorías en 76 ms
+343618 NAV Home dibujada en 3675 ms
+343636 LAG 110 ms :: 50% SurfaceControl.nativeRelease:-2 < SurfaceControl.release:1126 || 50% Bitmap.nativeGetAllocationByteCount:-2 < Bitmap.getAllocationByteCount:1673
+343882 LAG 118 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+349150 ABRIR Search
+349247 NAV Search dibujada en 97 ms
+354625 LAG 114 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+355143 LAG 110 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+361280 ABRIR Home
+361395 NAV Home dibujada en 115 ms
+361550 LAG 140 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+361670 LAG 117 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+363043 LAG 185 ms :: 100% MutableIntList.add:1 < NodeChain.processPendingLeaving:84
+364418 NAV Login dibujada
+364436 LAG 347 ms :: 43% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 43% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 6% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+364554 CATALOGO LIVE 60 elementos, 8 categorías en 136 ms
+364554 CATALOGO MOVIES 80 elementos, 8 categorías en 136 ms
+364555 LAG 138 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+364650 CATALOGO SERIES 30 elementos, 6 categorías en 232 ms
+364651 NAV Home dibujada en 3371 ms
+364865 LAG 117 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+370067 ABRIR Settings
+370094 NAV Settings dibujada en 27 ms
+372887 ABRIR Home
+372973 NAV Home dibujada en 86 ms
+376664 INICIO pid=9670
+376799 LAG 123 ms :: 50% ContentResolver.<init>:784 < ContentResolver.<init>:780 ... MainActivity.onCreate:89 || 50% Parcel.nativeWriteInterfaceToken:-2 < Parcel.writeInterfaceToken:646
+377418 LAG 621 ms :: 90% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 3% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 3% SlotWriter.moveGroupGapTo:170 < SlotWriter.close:16
+377418 NAV Login dibujada
+377546 LAG 127 ms :: 50% MutableVector.<init>:1 < LayoutNode.applyModifier:42 || 50% Arrays.fill:2794 < ArraysKt.fill$default:4
+377795 LAG 252 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+377981 CATALOGO LIVE 60 elementos, 8 categorías en 3 ms
+377981 CATALOGO MOVIES 80 elementos, 8 categorías en 3 ms
+377981 CATALOGO SERIES 30 elementos, 6 categorías en 3 ms
+378176 LAG 167 ms :: 16% NativeAllocationRegistry.registerNativeAllocation:293 < NativeAllocationRegistry.registerNativeAllocation:247 || 16% LayoutNode.getPlaceOrder$ui_release:1 < LayoutNodeLayoutDelegate$MeasurePassDelegate.markNodeAndSubtreeAsPlaced$1:75 || 16% SlotWriter.dataIndexToDataAnchor:1 < SlotWriter.startGroup:18
+378772 NAV Home dibujada
+378783 LAG 613 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+379284 LAG 439 ms :: 95% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 4% RecordingCanvas.obtain:58 < RenderNode.beginRecording:375
+380286 ABRIR Movies
+380421 LAG 123 ms :: 25% LayoutNode.get_children$ui_release:1 < LayoutNode.getZSortedChildren:10 || 25% NodeKindKt.calculateNodeKindSetFromIncludingDelegates:1 < NodeChain.createAndInsertNodeAsChild:11 || 25% NodeCoordinator.onPlaced:1 < LayoutModifierNodeCoordinator.placeAt-f8xVGno:9
+380565 NAV Movies dibujada en 279 ms
+380565 LISTO películas (80 elementos, 11 filas) a 279 ms de abrir Movies
+380624 LAG 205 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+380815 LAG 128 ms :: 66% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 33% SpannableStringBuilder.obtain:1010 < SpannableStringBuilder.getSpans:878
+382670 ABRIR Home
+382834 NAV Home dibujada en 164 ms
+383057 LAG 116 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+384129 ABRIR Live
+384236 LAG 102 ms :: 50% AndroidUiDispatcher.dispatch:1 < InlineList.resumeCancellableWith:44 || 50% Modifier$Node.runAttachLifecycle$ui_release:1 < DelegatingNode.runAttachLifecycle$ui_release:11
+384300 NAV Live dibujada en 171 ms
+384301 LISTO TV en vivo (60 canales, 10 filas) a 172 ms de abrir Live
+384421 LAG 119 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+384692 LAG 167 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+386081 ABRIR Home
+386195 LAG 102 ms :: 33% Canvas.getClipBounds:1321 < AndroidParagraph.paint:28 || 33% ViewGroup.onDescendantInvalidated:6004 < ViewGroup.onDescendantInvalidated:6024 || 33% HashSet.add:219 < LruCache.get:27
+386213 NAV Home dibujada en 132 ms
+388401 INICIO pid=9942
+388624 LAG 207 ms :: 42% BinderProxy.transactNative:-2 < BinderProxy.transact:540 ... MainActivity.onCreate:89 || 28% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 14% EventLog.writeEvent:-2 < EventLogTags.writeWmOnCreateCalled:66
+389277 NAV Login dibujada
+389292 LAG 663 ms :: 91% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 2% Class.getNameNative:-2 < Class.getName:745 || 2% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+389533 LAG 255 ms :: 77% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 11% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 11% Lambda.<init>:1 < PainterNode$measure$1.<init>:1
+395604 LAG 118 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+396306 LAG 117 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+398930 NAV Home dibujada
+399041 CATALOGO SERIES 30 elementos, 6 categorías en 165 ms
+399556 CATALOGO LIVE 60 elementos, 8 categorías en 680 ms
+399556 CATALOGO MOVIES 80 elementos, 8 categorías en 680 ms
+399560 LAG 516 ms :: 96% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 3% FocusOwnerImpl$focusSearch$1.invoke:1 < LookaheadCapablePlaceable$layout$1.placeChildren:7
+400002 LAG 440 ms :: 11% BufferedChannel.receive:1 < SnapshotStateKt__SnapshotFlowKt$snapshotFlow$1.invokeSuspend:207 ... ComponentsKt$PosterCard$1.invoke:700 || 11% LayoutNodeLayoutDelegate$MeasurePassDelegate.getParentAlignmentLinesOwner:1 < LookaheadAlignmentLines.recalculateQueryOwner:10 || 11% SnapshotIdSet.<init>:1 < SnapshotIdSet.clear:39 ... ComponentsKt$PosterCard$1.invoke:700
+400487 LAG 257 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+400641 LAG 157 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+407349 INICIO pid=10265
+407514 LAG 149 ms :: 25% Intrinsics.checkNotNullExpressionValue:1 < ViewModelProvider$AndroidViewModelFactory.create:20 ... MainActivity.qaOpen:3 < MainActivity.onCreate:9 || 25% ContextImpl.getMainLooper:346 < ContextWrapper.getMainLooper:112 ... MainActivity.onCreate:89 || 25% Class.getDeclaredMethodInternal:-2 < Class.getMethod:2067 ... AppViewModel.<init>:128 < MainActivity.qaOpen:3 < MainActivity.onCreate:9
+408145 LAG 626 ms :: 87% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 3% CanvasDrawScope.<init>:1 < GraphicsLayerV29.<init>:8 || 3% View.getParent:16393 < AndroidComposeView.recalculateWindowPosition:29
+408175 NAV Login dibujada
+408421 LAG 222 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+420742 INICIO pid=10392
+420874 LAG 131 ms :: 50% AssetManager.nativeOpenXmlAsset:-2 < AssetManager.openXmlBlockAsset:1092 ... MainActivity.onCreate:89 || 50% InsetsState.processSource:298 < InsetsState.calculateInsets:203 ... MainActivity.onCreate:89
+421603 LAG 720 ms :: 92% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 2% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 2% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+421620 NAV Login dibujada
+421850 LAG 217 ms :: 77% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 11% ComposerImpl.updatedNodeCount:1 < ComposerImpl.end:2565 || 11% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+431428 LAG 137 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+434024 CATALOGO MOVIES 80 elementos, 8 categorías en 88 ms
+434024 CATALOGO SERIES 30 elementos, 6 categorías en 88 ms
+434024 NAV Home dibujada
+434049 CATALOGO LIVE 60 elementos, 8 categorías en 113 ms
+434751 LAG 682 ms :: 67% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 3% BaseRecordingCanvas.nDrawTextRun:-2 < BaseRecordingCanvas.drawTextRun:543 || 3% Density.toPx--R2X_6o:1 < DpKt.resolveLineHeightInPx-o2QH7mI:45
+434900 LAG 152 ms :: 80% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 20% DispatchedTask.getExceptionalResult$kotlinx_coroutines_core:1 < CancellableContinuationImpl.getExceptionalResult$kotlinx_coroutines_core:1
+435328 LAG 363 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+435510 LAG 171 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+442171 INICIO pid=10601
+442911 LAG 699 ms :: 86% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 5% BinderProxy.transactNative:-2 < BinderProxy.transact:540 || 2% ImageDecoder.nDecodeBitmap:-2 < ImageDecoder.decodeBitmapInternal:1712 ... LoginScreenKt$LoginScreen$1.invoke:1886 < ThemeKt.AppBackground:331 < Config.AppRoot:165
+442980 NAV Login dibujada
+443294 LAG 311 ms :: 92% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 7% Collections$SynchronizedMap.get:2635 < InputConnectionInspector.getMissingMethodFlagsInternal:112
+457144 LAG 144 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+458987 LAG 101 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+460044 CATALOGO LIVE 60 elementos, 8 categorías en 49 ms
+460048 CATALOGO SERIES 30 elementos, 6 categorías en 53 ms
+460051 CATALOGO MOVIES 80 elementos, 8 categorías en 53 ms
+460738 NAV Home dibujada
+460758 LAG 700 ms :: 55% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 2% InlineList.threadContextElements:1 < InlineList.updateThreadContext:3 ... ComponentsKt$PosterCard$1.invoke:700 || 2% RealNetworkObserver.setDensity:1 < GraphicsLayerV29.record:19
+460862 LAG 117 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+460983 LAG 122 ms :: 66% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 33% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+461431 LAG 443 ms :: 94% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 5% AnchoredGroupPath.currentThreadId:1 < TransparentObserverMutableSnapshot.<init>:65
+461646 LAG 220 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+467414 ABRIR Live
+467521 LAG 120 ms :: 33% MutableVector$MutableVectorList.get:1 < OffsetKt.measure:16 || 33% LineBreaker.nComputeLineBreaks:-2 < LineBreaker.computeLineBreaks:478 || 33% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+467647 NAV Live dibujada en 233 ms
+467647 LISTO TV en vivo (60 canales, 10 filas) a 233 ms de abrir Live
+467654 LAG 127 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+467927 LAG 172 ms :: 83% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 16% TransparentObserverMutableSnapshot.<init>:1 < SnapshotIdSetKt.observe:106
+468105 LAG 182 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+471886 LAG 149 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+479467 LAG 203 ms :: 71% Object.wait:-2 < Object.wait:442 ... LiveScreenKt$LiveScreen$4$1$3$1$1$1$1$1$1$1.invoke:66 < MainActivity.dispatchKeyEvent:10 || 14% Actual_jvmKt.materializeModifier:1 < ImageKt.Image:310 ... LiveScreenKt$$ExternalSyntheticLambda9.invoke:27 || 14% Surface.nativeForceScopedDisconnect:-2 < Surface.forceScopedDisconnect:728
+479658 LAG 190 ms :: 50% Object.wait:-2 < Object.wait:442 ... PlayerActivity.onStart:123 || 16% ExoPlayerImpl.createMessageInternal:29 < ExoPlayerImpl.setVideoOutputInternal:23 ... PlayerActivity.onStart:144 || 16% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+479871 LAG 210 ms :: 87% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 12% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+480003 LAG 100 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+480182 LAG 202 ms :: 50% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 37% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 12% BinderProxy.transactNative:-2 < BinderProxy.transact:540
+480949 LAG 134 ms :: 50% SurfaceControl.nativeApplyTransaction:-2 < SurfaceControl.access$500:82 || 50% SurfaceControl.nativeSetRelativeLayer:-2 < SurfaceControl.access$1600:82
+488368 LAG 128 ms :: 100% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434
+499871 LAG 281 ms :: 50% HardwareRenderer.nSyncAndDrawFrame:-2 < HardwareRenderer.syncAndDrawFrame:434 || 41% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 8% Intrinsics.areEqual:1 < MutableObjectIntMap.findKeyIndex:86
+499937 NAV Login dibujada
+500084 LAG 136 ms :: 75% HardwareRenderer.nSetStopped:-2 < HardwareRenderer.setStopped:475 || 25% BinderProxy.transactNative:-2 < BinderProxy.transact:540
